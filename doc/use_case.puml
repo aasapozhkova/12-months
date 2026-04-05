@@ -1,0 +1,60 @@
+@startuml
+!theme reddress-darkred
+
+left to right direction
+
+actor "Падчерица" as person
+actor "Королева" as king
+rectangle "Братья-месяцы" {
+actor "Январь" as Month1
+actor "Февраль" as Month2
+actor "Март" as Month3
+actor "Апрель" as Month4
+}
+actor "Дочь и Мачеха" as Badperson
+
+package "Управление ресурсом Snowdrops"{
+usecase "Искать цветы" as Lookfor
+usecase "Попросить подснежники" as ask
+usecase "Передать следующему" as gonext
+usecase "Сменить сезон" as change
+usecase "Отдать цветы" as gife
+usecase "Везти цветы" as go
+usecase "Замёрзнуть в лесу" as dead
+usecase "Получать подарки" as gift
+usecase "Отправить в лес" as forest
+}
+
+person -[hidden]- king
+Badperson -[hidden]- person
+Month1 -[hidden]- Month2
+Month2 -[hidden]- Month3
+Month3 -[hidden]- Month4
+Lookfor -[hidden]- ask
+Lookfor -[hidden]- forest
+ask -[hidden]- gonext
+forest -[hidden]- go
+go -[hidden]- gift
+gonext -[hidden]- change
+ask -[hidden]- gift
+
+person --> Lookfor
+Lookfor ..> ask
+ask ..> Month1
+Month1 --> gonext
+Month2 --> gonext
+Month3 --> gonext
+gonext ..> Month4
+Month4 --> change
+person --> gife
+gife ..> Badperson
+Badperson --> go
+go ..> king
+king --> forest
+forest ..> Badperson
+Badperson --> dead
+person --> gift
+Badperson --> forest
+forest ..> person
+
+@enduml
