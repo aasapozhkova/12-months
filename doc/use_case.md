@@ -49,7 +49,7 @@
 
 ## Диаграмма
 
-<img width="874" height="521" alt="12 месяцев 1д" src="https://github.com/user-attachments/assets/8023493f-56fc-4ae5-a7c6-235d24eccad4" />
+![Диаграмма вариантов использования](use_case.png)
 
 ```
 @startuml
