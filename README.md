@@ -6,7 +6,7 @@
 
 | Диаграмма | Описание | Файл |
 |-----------|----------|------|
-| Use Case | Управление ресурсом Snowdrops | [doc/use_case.md](doc/use_case.md) |
+| Use Case | Управление ресурсом Snowdrops | [use_case.md](use_case.md) |
 | Class | Диаграмма классов (ООП структура) | [doc/class.md](doc/class.md) |
 | Activity | Алгоритм работы системы | [doc/activity.md](doc/activity.md) |
 | Sequence | Пошаговое взаимодействие 12 месяцев | [doc/sequence.md](doc/sequence.md) |
