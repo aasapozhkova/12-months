@@ -50,3 +50,80 @@
 ## Диаграмма
 
 ![Диаграмма вариантов использования](use_case.png)
+
+```
+@startuml
+!theme reddress-darkred
+
+left to right direction
+
+actor "Падчерица" as person
+actor "Королева" as king
+rectangle "Братья-месяцы" {
+actor "Январь" as Month1
+actor "Февраль" as Month2
+actor "Март" as Month3
+actor "Апрель" as Month4
+}
+actor "Дочь и Мачеха" as Badperson
+
+package "Управление ресурсом Snowdrops"{
+usecase "Искать цветы" as Lookfor
+usecase "Попросить подснежники" as ask
+usecase "Передать следующему" as gonext
+usecase "Сменить сезон" as change
+usecase "Отдать цветы" as gife
+usecase "Везти цветы" as go
+usecase "Замёрзнуть в лесу" as dead
+usecase "Получать подарки" as gift
+usecase "Отправить в лес" as forest
+}
+
+person -[hidden]- king
+Badperson -[hidden]- person
+Month1 -[hidden]- Month2
+Month2 -[hidden]- Month3
+Month3 -[hidden]- Month4
+Lookfor -[hidden]- ask
+Lookfor -[hidden]- forest
+ask -[hidden]- gonext
+forest -[hidden]- go
+go -[hidden]- gift
+gonext -[hidden]- change
+ask -[hidden]- gift
+
+person --> Lookfor
+Lookfor ..> ask
+ask ..> Month1
+Month1 --> gonext
+Month2 --> gonext
+Month3 --> gonext
+gonext ..> Month4
+Month4 --> change
+person --> gife
+gife ..> Badperson
+Badperson --> go
+go ..> king
+king --> forest
+forest ..> Badperson
+Badperson --> dead
+person --> gift
+Badperson --> forest
+forest ..> person
+
+@enduml
+
+## Описание
+
+Эта диаграмма вариантов использования иллюстрирует сценарий сказки, связанный с историей "12 vtczwtd":
+
+1. **Дочь и Мачеха** в наказание **Отправить в лес** **Падчерица** за подснежниками
+2. **Падчерица** **Искать цветы** и находит Братьев-месяцев у костра
+3. **Падчерица** **Попросить подснежники** у месяцев
+4. Месяцы **Январь**, **Февраль** и **Март** передают жезл **Передать следующему** пока не доходят до **Апрель**
+5. **Апрель** временно воздействует на природу **Сменить сезон**, чтобы выросли подснежники
+6. **Падчерица** возвращается обратно и **Отдать цветы** **Дочь и Мачеха**
+7. **Дочь и Мачеха** радуются и **Везти цветы** **Королева**
+8. **Королева** нравятся весенние цветы и она требует ещё **Отправить в лес** **Дочь и Мачеха**
+9. **Дочь и Мачеха** грубят месяцам и не найдя цветы **Замерзнуть в лесу**
+10. **Падчерица** добра и вежлива с братьями и Братья-месяцы одаривают подарками. **Падчерица** **Получать подарки**
